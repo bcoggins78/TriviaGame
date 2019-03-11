@@ -1,49 +1,85 @@
 $(document).ready(function () {
 
     // Declare Variables
-    var time=61;
+    var time=81;
     var intervalId;
     var correct = 0;
     var wrong = 0;
     var unAnswered = 0;
+    var winAudio = document.getElementById("win");
+    var loseAudio = document.getElementById("lose");
 
     // Create array of question objects
     var triviaQuestions = [
         {
-            question: "This is question 1?",
-
-            answers: ["Q1 Answer 1", "Q1 Answer 2", "Q1 Answer 3", "Q1 Answer 4"],
-
+            question: "Who is the main villain in Final Fantasy VI?",
+            answers: ["Sepheroth", "Golbez", "Garland", "Kefka"],
             correctAnswer: "4"
         },
 
         {
-            question: "This is question 2?",
-
-            answers: ["Q2 Answer 1", "Q2 Answer 2", "Q2 Answer 3", "Q2 Answer 4"],
-
+            question: "In Final Fantasy IV, who does Cecil need to fight in order to become a Paladin?",
+            answers: ["Kain", "Himself", "Zeromus", "Bahumut"],
             correctAnswer: "2"
         },
 
         {
-            question: "This is question 3?",
-
-            answers: ["Q3 Answer 1", "Q3 Answer 2", "Q3 Answer 3", "Q3 Answer 4"],
-
+            question: "What character name can be found in almost all Final Fantasy games?",
+            answers: ["Cid", "Terra", "Titus", "Zidane"],
             correctAnswer: "1"
         },
+
+        {
+            question: "Which Final Fantasy game was the first multiplayer?",
+            answers: ["XV", "XIII", "XI", "XIV"],
+            correctAnswer: "3"
+        },
+
+        {
+            question: "Who was Squall's main rival in Final Fantasy VIII?",
+            answers: ["Cloud", "Seifer", "Yang", "Rinoa"],
+            correctAnswer: "2"
+        },
+
+        {
+            question: "What's the main mode of travel across all Final Fantasy games?",
+            answers: ["Chocobo", "Ostrich", "Bike", "Car"],
+            correctAnswer: "1"
+        },
+
+        {
+            question: "Which main character has a tragic death scene in Final Fantasy VII?",
+            answers: ["Tifa", "Biggs", "Wedge", "Aeris"],
+            correctAnswer: "4"
+        },
+
+        {
+            question: "In Final Fantasy X, which city is Titus from?",
+            answers: ["Luca", "Besaid", "Zanarkand", "Bevelle"],
+            correctAnswer: "3"
+        },
+
+        {
+            question: "Who is the Archfiend of Earth in the first Final Fantasy?",
+            answers: ["Marilith", "Scarmiglione", "Lich", "Tiamat"],
+            correctAnswer: "3"
+        },
+
+        {
+            question: "In Final Fantasy IX, who is the Black Mage?",
+            answers: ["Vivi", "Stella", "Zok", "Gungho"],
+            correctAnswer: "1"
+        },
+
+        
     ];
-
-
-
-    
-
 
     // The click event for the button to start the trivia game
     $("#start-trivia").on("click", function () {
         $("#start-button").hide();
         $("#finish-button").show();
         $("#time-text").show();
+        $("#timer").show();
         displayQuestions();
         startTimer();
         
@@ -64,12 +100,9 @@ $(document).ready(function () {
 
     });
 
-
-
-    // Function to remove the start button and start the for loop to display trivia questions. 
+    // Function to start the for loop and display trivia questions. 
      var displayQuestions = function () {
         
-
         var questionDiv = $("#question-area");
 
         for (var i = 0; i < triviaQuestions.length; i++) {
@@ -81,26 +114,8 @@ $(document).ready(function () {
             var rChoice4 = $("<input type='radio' name=" + i + " value=4>" + triviaQuestions[i].answers[3] + "</input><br><br><hr>")
 
             $(questionDiv).append(hQuestions, rChoice1, rChoice2, rChoice3, rChoice4);
-            
-            
-        }
-
-         // The click event to end the game
-        // $("#finish-button").on("click", function () {
-        //     console.log("The finish button was clicked")
-        //     stopTimer();
-        //     endGame();
-        // });
-
-        // var finishBtn = $("<button>");
-        // finishBtn.addClass("btn btn-success justify-content-center");
-        // finishBtn.attr("id", "finish-button");
-        // finishBtn.text("Finished");
-        // $(questionDiv).append(finishBtn);
-
-        
+        }        
     };
-        
     
     // Function to display results page.
     var results = function() {
@@ -110,21 +125,30 @@ $(document).ready(function () {
         $("#unanswered").show();
         $("#correct-number").html("<h4>" + ": " + correct + "</h4>")
         $("#wrong-number").html("<h4>" + ": " + wrong + "</h4>")
-        $("#unanswered-number").html("<h4>" + ": " + unanswered + "</h4>")
-
+        // $("#unanswered-number").html("<h4>" + ": " + unanswered + "</h4>")
+        if (correct >=7) {
+            $(".cloud").show();
+            winAudio.play();
+        }
+        else {
+            $(".kefka").show();
+            loseAudio.play();
+        }
     }
-        
-    
-    
+   
     // Function to check if selections are correct or wrong.
     var rightWrong = function() {
 
         for (var i = 0; i < triviaQuestions.length; i++) {
-
             if ($("input[name="+i+"]:checked").val() == triviaQuestions[i].correctAnswer) {
                 console.log("Correct");
                 correct++;
                 }
+            // Working on a way to check if there is an unanswered question
+            // else if ($("input[name="+i+"]:checked").val()) {
+            //     console.log("unAnswered");
+            //     unAnswered++;
+            // }
             
             else {
                 console.log("Wrong");
@@ -133,6 +157,7 @@ $(document).ready(function () {
         };
         console.log("Number of correct answers: " + correct);
         console.log("Number of wrong answers: " + wrong);
+        // console.log("Number of unanswered: " + unAnswered);
         return(correct, wrong, unAnswered)
     };
 
@@ -149,7 +174,7 @@ $(document).ready(function () {
     var decrementTimer = function() {
         
         time--;
-        $("#timer").html("<h3>" + " " + time + "</h3>")
+        $("#timer").html("<h3>" + time + "</h3><hr>")
         if (time === 0) {
             stopTimer();
             endGame();
@@ -176,6 +201,5 @@ $(document).ready(function () {
         rightWrong();
         clearQuestions();
         results();
-        
     };
 });

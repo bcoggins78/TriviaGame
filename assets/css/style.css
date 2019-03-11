@@ -1,22 +1,70 @@
-#title {
-    background-color: grey;
+body {
+    background: url("../images/ff_background.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+    margin:0;
 }
 
-.container {
-    background-color: aqua;
+#title {
+    background-color: white;
+    font-family: "Times New Roman", "Courier new";
+    margin:0;
     
 }
 
-#start {
-    margin: 300px;
+#logo {
+    height: 25%;
+    width: 25%;
+}
+
+.container {
+    background: rgba(26, 64, 121, 0.85);
+    color: white;
+    margin-top: 20px;
+    border: 20px ridge rgba(235, 235, 250, 0.767);
+    box-shadow: 10px 10px 5px rgba(31, 31, 31, 0.644);
+    
+}
+
+#start-button {
+    margin-top: 20%;
+    margin-bottom: 15%
+}
+
+#results {
+    margin-bottom: 5%;
+}
+
+hr {
+    border: 1px solid white;
+}
+
+.kefka {
+    height: 80px;
+    width: 48px;
+    display: none;
+    
+}
+
+.cloud {
+    display: none;
+}
+
+#wrong {
+    display: none;
+    float: left;
+}
+
+#wrong-number {
+    float: left;
 }
 
 /* Initially hidden at start of the game. */
+#timer,
 #time-text,
 #finish-button,
 #results-header,
 #correct,
-#wrong,
 #unanswered {
     display: none;
 }

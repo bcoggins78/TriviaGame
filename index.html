@@ -14,13 +14,19 @@
 </head>
 
 <body>
+    <audio id="win">
+        <source src="assets/sounds/ff_victory.mp3" type="audio/mpeg"></audio>
+    <audio id="lose">
+        <source src="assets/sounds/kefka_laugh.mp3" type="audio/mpeg"></audio>
+
     <div class="justify-content-center row" id="title">
+        <img src="assets/images/FinalFantasyLogo.svg" alt="Final Fantasy logo" id="logo">
         <h1>Trivia Game</h1>
     </div>
     <div class="container jumbotron">
         <div class="row justify-content-center">
             <div id="start-button">
-                <button type="button" class="btn btn-success" id="start-trivia">
+                <button type="button" class="btn btn-light btn-outline-light btn-lg" id="start-trivia">
                     <h2>Start</h2>
                 </button>
             </div>
@@ -28,9 +34,12 @@
 
         <div class="row justify-content-center">
             <div id="time-text">
-                <h3>Time Remaining:</h3>
+                <h3>Time Remaining:&nbsp;</h3>
+                <hr><br>
             </div>
-            <div id="timer"></div>
+            <div id="timer">
+                <hr>
+            </div>
         </div>
 
         <div class="row justify-content-center">
@@ -39,13 +48,14 @@
 
         <div class="row justify-content-center">
             <div id="finish-button">
-                <button type="button" class="btn btn-success" id="stop-trivia">
+                <button type="button" class="btn btn-light btn-outline-light btn-lg" id="stop-trivia">
                     <h2>Finish</h2>
                 </button>
             </div>
         </div>
 
         <div class="row justify-content-center">
+            <div id="results"></div>
             <div id="results-header">
                 <h3>Results</h3>
             </div>
@@ -66,26 +76,23 @@
         </div>
 
         <div class="row justify-content-center">
+            <img class="kefka" src="assets/images/kefka_laugh.gif" alt="Kefka">
+
+        </div>
+
+        <div class="row justify-content-center">
+            <img class="cloud" src="assets/images/cloud.png" alt="Cloud">
+
+        </div>
+
+        <!-- Placeholder to show number of un-answered questions -->
+        <!-- <div class="row justify-content-center">
                 <div id="unanswered">
                     <h4>Unanswered</h4>
                 </div>
                 <div id="unanswered-number"></div>
-            </div>
-
-
-
-
-
-
-
+            </div> -->
 
     </div>
-
-
-
-
-
-
 </body>
-
 </html>
