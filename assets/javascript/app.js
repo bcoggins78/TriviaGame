@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // Declare Variables
-    var time=12;
+    var time=61;
     var intervalId;
     var correct = 0;
     var wrong = 0;
@@ -36,19 +36,33 @@ $(document).ready(function () {
 
 
 
-
+    
 
 
     // The click event for the button to start the trivia game
     $("#start-trivia").on("click", function () {
-        $("button").remove();
+        $("#start-button").hide();
+        $("#finish-button").show();
+        $("#time-text").show();
         displayQuestions();
         startTimer();
         
     });
 
+    // Function to hide certain elements
+    var hide = function() {
+        $("#finish-button").hide();
+        $("#timer").hide();
+    };
+   
+     // The click event to end the game
+     $("#stop-trivia").on("click", function () {
+        console.log("The finish button was clicked")
+        stopTimer();
+        endGame();
+        hide();
 
-    
+    });
 
 
 
@@ -71,16 +85,34 @@ $(document).ready(function () {
             
         }
 
-        var finishBtn = $("<button>");
-        finishBtn.addClass("btn btn-success justify-content-center");
-        finishBtn.text("Finished");
-        $(questionDiv).append(finishBtn);
+         // The click event to end the game
+        // $("#finish-button").on("click", function () {
+        //     console.log("The finish button was clicked")
+        //     stopTimer();
+        //     endGame();
+        // });
+
+        // var finishBtn = $("<button>");
+        // finishBtn.addClass("btn btn-success justify-content-center");
+        // finishBtn.attr("id", "finish-button");
+        // finishBtn.text("Finished");
+        // $(questionDiv).append(finishBtn);
 
         
-    }
+    };
         
     
-        
+    // Function to display results page.
+    var results = function() {
+        $("#results-header").show();
+        $("#correct").show();
+        $("#wrong").show();
+        $("#unanswered").show();
+        $("#correct-number").html("<h4>" + ": " + correct + "</h4>")
+        $("#wrong-number").html("<h4>" + ": " + wrong + "</h4>")
+        $("#unanswered-number").html("<h4>" + ": " + unanswered + "</h4>")
+
+    }
         
     
     
@@ -99,9 +131,10 @@ $(document).ready(function () {
                 wrong++;
             }
         };
-        
-        return(correct, wrong)
-    }
+        console.log("Number of correct answers: " + correct);
+        console.log("Number of wrong answers: " + wrong);
+        return(correct, wrong, unAnswered)
+    };
 
 
     //---------Timer----------------//
@@ -109,36 +142,40 @@ $(document).ready(function () {
     var startTimer = function() {
         clearInterval(intervalId);
         intervalId = setInterval(decrementTimer, 1000);
-    }
+    };
     
     // Displays the timer in the HTML and decrements the time value by 1 second.  
     // Once time is 0 the timer stops.
     var decrementTimer = function() {
         
         time--;
-        $("#timer").html("<h3>" + "Time remaining: " + time + "</h3>")
+        $("#timer").html("<h3>" + " " + time + "</h3>")
         if (time === 0) {
             stopTimer();
             endGame();
         }
-    }
+    };
 
     // Function to stop the timer
     var stopTimer = function() {
         clearInterval(intervalId);
-    }
+    };
     //---------Timer----------------//
 
-    
+    // Function to clear the screen of questions
+    var clearQuestions = function() {
+        $("#question-area").hide();
+        $("#timer").hide();
+        $("#time-text").hide();
+        $("#finish-button").hide();
+    };
     
     // Create a finish function that will display the number of correct and wrong answers.  This will be called
-    // by a button or when the time runs out.
+    // by the finish button or when the time runs out.
     var endGame = function() {
-        rightWrong()
-        // ("#question-area").remove();
-        var allDone = $("<h3>All Done!</h3>");
+        rightWrong();
+        clearQuestions();
+        results();
         
-
-
-    }
+    };
 });
