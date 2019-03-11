@@ -4,8 +4,19 @@
 
 .container {
     background-color: aqua;
+    
 }
 
 #start {
     margin: 300px;
+}
+
+/* Initially hidden at start of the game. */
+#time-text,
+#finish-button,
+#results-header,
+#correct,
+#wrong,
+#unanswered {
+    display: none;
 }
