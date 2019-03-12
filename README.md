@@ -1,16 +1,16 @@
-# TriviaGame
+# Final Fantasy themed Trivia Game
 
-### Option One: Basic Quiz (Timed Form)
+### UNC Coding Bootcamp Week 5 Homework Project
 
 
-**[Click Here to Watch the Demo](https://youtu.be/fBIj8YsA9dk)**.
 
-* You'll create a trivia form with multiple choice or true/false options (your choice).
+**[https://bcoggins78.github.io/TriviaGame/](https://bcoggins78.github.io/TriviaGame/)**.
 
-* The player will have a limited amount of time to finish the quiz. 
+This is a trivia game based on the classic RPG video game Final Fantasy. The player clicks the start button which starts a timer and displays the questions.  If the player is able to answer the questions before the time runs out, they can click the finish button to see the results.  If time runs out, then the results are shown.  The player must get at least 70% of the questions right to win the trivia game. If won, the player will see the hero Cloud from Final Fantasy VII with the classic victory music.  If lost, then the infamous villain Kefka will be displayed with his notorious evil laugh.
 
-  * The game ends when the time runs out. The page will reveal the number of questions that players answer correctly and incorrectly.
+Week 5 introduces the use of timers which was used in this project.  The project was built with: 
 
-* Don't let the player pick more than one answer per question.
-
-* Don't forget to include a countdown timer.
+* HTML 
+* CSS
+* JavaScript
+* JQuery
