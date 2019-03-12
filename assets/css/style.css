@@ -31,6 +31,11 @@ body {
     margin-bottom: 15%
 }
 
+#retry-button {
+    margin-top: 20px;
+    display: none;
+}
+
 #results {
     margin-bottom: 5%;
 }

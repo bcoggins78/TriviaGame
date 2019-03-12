@@ -74,6 +74,8 @@ $(document).ready(function () {
         
     ];
 
+    //------------------------ Buttons ------------------------
+
     // The click event for the button to start the trivia game
     $("#start-trivia").on("click", function () {
         $("#start-button").hide();
@@ -85,12 +87,6 @@ $(document).ready(function () {
         
     });
 
-    // Function to hide certain elements
-    var hide = function() {
-        $("#finish-button").hide();
-        $("#timer").hide();
-    };
-   
      // The click event to end the game
      $("#stop-trivia").on("click", function () {
         console.log("The finish button was clicked")
@@ -100,6 +96,50 @@ $(document).ready(function () {
 
     });
 
+     // The click event to reset the game
+     $("#retry-trivia").on("click", function () {
+        console.log("The retry button was clicked")
+        retry();
+        displayQuestions();
+        startTimer();
+    });
+
+    //------------------------ Buttons ------------------------
+
+    
+    // Function to show/hide appropriate elements and reset the time and score
+    var retry = function() {
+        $("#question-area").show();
+        $("#finish-button").show();
+        $("#time-text").show();
+        $("#timer").show();
+        $(".cloud").hide();
+        $(".kefka").hide();
+        $("#results-header").hide();
+        $("#correct").hide();
+        $("#wrong").hide();
+        $("#unanswered").hide();
+        $("#correct-number").hide();
+        $("#wrong-number").hide();
+        $("#retry-button").hide();
+        $("#question-area").empty();
+        loseAudio.pause();
+        loseAudio.currentTime = 0;
+        winAudio.pause();
+        winAudio.currentTime = 0;
+        time=81;
+        correct = 0;
+        wrong = 0;
+        unAnswered = 0;
+    };
+
+    
+    // Function to hide certain elements
+    var hide = function() {
+        $("#finish-button").hide();
+        $("#timer").hide();
+    };
+   
     // Function to start the for loop and display trivia questions. 
      var displayQuestions = function () {
         
@@ -123,9 +163,12 @@ $(document).ready(function () {
         $("#correct").show();
         $("#wrong").show();
         $("#unanswered").show();
+        $("#correct-number").show();
+        $("#wrong-number").show();
         $("#correct-number").html("<h4>" + ": " + correct + "</h4>")
         $("#wrong-number").html("<h4>" + ": " + wrong + "</h4>")
         // $("#unanswered-number").html("<h4>" + ": " + unanswered + "</h4>")
+        $("#retry-button").show();
         if (correct >=7) {
             $(".cloud").show();
             winAudio.play();
