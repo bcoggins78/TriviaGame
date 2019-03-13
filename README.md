@@ -15,3 +15,6 @@ Week 5 introduces the use of timers which was used in this project.  The project
 * Bootstrap
 * JavaScript
 * JQuery
+
+
+![Trivia Game](/assets/images/screenshot.jpg)
