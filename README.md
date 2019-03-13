@@ -12,5 +12,6 @@ Week 5 introduces the use of timers which was used in this project.  The project
 
 * HTML 
 * CSS
+* Bootstrap
 * JavaScript
 * JQuery
